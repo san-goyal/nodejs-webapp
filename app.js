@@ -1,3 +1,18 @@
+const express = require('express');
+const app = express();
+const port = 1111;
+
+app.get("/",(req,res)=> {
+    console.log("request received");
+    res.send("Hello, Sandy!");
+});
+
+app.listen(port, function(){
+    console.log("Server listening on port 1111");
+});
+
+/* BASIC SERVER WITH HTTP
+
 const http = require('http');
 
 http
@@ -9,3 +24,4 @@ http
 })
 .listen(1111);
 console.log("Server listening on port 1111");
+*/
