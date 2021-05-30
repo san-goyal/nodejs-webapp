@@ -1,11 +1,11 @@
 const http = require('http');
 
+const routes = require("./routes");
+
 http
-.createServer((request,response)=>{
-    console.log("request received");
-    response.writeHead(200, { 'Content-type':'text/plain'});
-    response.write("Hello, Sandy!");
-    response.end();
-})
+.createServer(routes)
 .listen(1111);
 console.log("Server listening on port 1111");
+
+// createServer() method creates a server and accepts a requestListener function
+// that has two parameters: HTTP request(req) and response(res)
