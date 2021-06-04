@@ -3,3 +3,38 @@
         "@babel/preset-react"
     ]
 }
+
+/*
+ * npx webpack produce following error if .babelrc is not configured
+ *
+ 
+asset main.js 3.9 KiB [emitted] (name: main)  
+asset index.html 275 bytes [compared for emit]
+./src/client/index.js 39 bytes [built] [code generated] [1 error]
+
+ERROR in ./src/client/index.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: D:\O365\test-webapp-node-request\src\client\index.js: Support for the experimental syntax 'jsx' isn't currently enabled (5:5):  
+
+  3 |
+  4 | ReactDOM.render(
+> 5 |     <h1>Hello, Sandy!</h1>,
+    |     ^
+  6 |     document.getElementById('root')
+  7 | );
+
+Add @babel/preset-react (https://git.io/JfeDR) to the 'presets' section of your Babel config to enable transformation.
+If you want to leave it as-is, add @babel/plugin-syntax-jsx (https://git.io/vb4yA) to the 'plugins' section to enable parsing.
+    at Parser._raise (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:810:17)
+    at Parser.raiseWithData (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:803:17)
+    at Parser.expectOnePlugin (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:9995:18)
+    at Parser.parseExprAtom (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:11376:22)
+    at Parser.parseExprSubscripts (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10954:23)
+    at Parser.parseUpdate (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10934:21)
+    at Parser.parseMaybeUnary (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10912:23)
+    at Parser.parseExprOps (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10769:23)
+    at Parser.parseMaybeConditional (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10743:23)
+    at Parser.parseMaybeAssign (D:\O365\test-webapp-node-request\node_modules\@babel\parser\lib\index.js:10706:21)
+
+webpack 5.38.1 compiled with 1 error in 450 ms
+*/
