@@ -1,4 +1,5 @@
 const routes = require('express').Router();
+const asyncHandler = require('express-async-handler')
 
 routes.get("/", (req,res) => {
     res.setHeader("Content-Type", 'text/html')
@@ -6,10 +7,23 @@ routes.get("/", (req,res) => {
     res.end();
 });
 
-routes.post("/attach", (req, res) => {
+routes.post("/attach", asyncHandler(async (req, res) => {
     body = req.body;
-    res.write("in post attach method");
+
+    const methodRes = (soapBody) => {
+        return new Promise(async (resolve, reject) => {
+            if(soapBody){
+                resolve("body received");
+            }
+            else{
+                reject("body is empty");
+            }
+        });
+    };
+
+    const soapResponse = await methodRes(body);
+    res.write(soapResponse);
     res.end();
-})
+}));
 
 module.exports = routes;
